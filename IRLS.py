@@ -1,3 +1,5 @@
+import numpy as np
+
 class IRLS:
     def __init__(
         self, 
