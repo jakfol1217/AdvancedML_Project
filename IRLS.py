@@ -48,7 +48,7 @@ class IRLS:
         if self.interactions:
             X = self._add_interactions(X)
         if self.fit_intercept == "column":
-            X = np.hstack((np.ones((self.observations, 1)), X))
+            X = np.hstack((np.ones((X.shape[0], 1)), X))
         return X
     
     def _algorithm(self, X, y):
@@ -83,7 +83,7 @@ class IRLS:
         
     
     def fit(self, X, y, interactions=None):
-        self.observations, self.real_features = X.shape
+        _, self.real_features = X.shape
         self._data_asserts(X, y)
         
         if interactions is not None:
